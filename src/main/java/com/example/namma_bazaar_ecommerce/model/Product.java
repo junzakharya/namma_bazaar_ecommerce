@@ -3,10 +3,7 @@ package com.example.namma_bazaar_ecommerce.model;
 import com.example.namma_bazaar_ecommerce.Enum.ProductCategory;
 import com.example.namma_bazaar_ecommerce.Enum.ProductStatus;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
@@ -15,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @Table(name = "product")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Product {
 
     @Id
