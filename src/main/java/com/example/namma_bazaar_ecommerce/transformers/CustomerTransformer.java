@@ -20,7 +20,10 @@ public class CustomerTransformer {
     }
     public static CustomerResponseDto customerToCustomerResponseDto(Customer customer){
         return CustomerResponseDto
-                .builder().message("Hi "+ customer.getName()+ " Welcome to Namma Bazar" )
+                .builder()
+                .address(customer.getAddress())
+                .age(customer.getAge())
+                .name(customer.getName())
                 .build();
     }
 }

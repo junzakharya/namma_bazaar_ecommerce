@@ -4,8 +4,7 @@ import com.example.namma_bazaar_ecommerce.Enum.ProductCategory;
 import com.example.namma_bazaar_ecommerce.dto.requestDto.ProductRequestDto;
 import com.example.namma_bazaar_ecommerce.dto.responseDto.ProductResponseDto;
 import com.example.namma_bazaar_ecommerce.exception.InvalidSellerException;
-import com.example.namma_bazaar_ecommerce.service.ProductService;
-import jakarta.persistence.TableGenerators;
+import com.example.namma_bazaar_ecommerce.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    ProductService productService;
+    ProductServiceImpl productService;
 
     @PostMapping("/add") // to add a product for a seller
     public ProductResponseDto addProduct(@RequestBody ProductRequestDto productRequestDto) throws InvalidSellerException {
