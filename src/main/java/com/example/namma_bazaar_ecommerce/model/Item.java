@@ -1,10 +1,7 @@
 package com.example.namma_bazaar_ecommerce.model;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @Table(name = "item")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Item {
 
     @Id
@@ -31,7 +29,7 @@ public class Item {
     @JoinColumn
     Ordered ordered;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn
     Product product;
 }

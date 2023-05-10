@@ -22,7 +22,7 @@ public class Ordered {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    int orderNumber;
+    String orderNumber;
 
     int totalValue;
 

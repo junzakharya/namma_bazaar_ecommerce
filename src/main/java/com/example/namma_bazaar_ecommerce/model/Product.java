@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,6 +37,6 @@ public class Product {
     @JoinColumn
     Seller seller;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
-    Item item;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    List<Item>itemList;
 }

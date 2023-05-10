@@ -1,9 +1,11 @@
 package com.example.namma_bazaar_ecommerce.service.impl;
 
 import com.example.namma_bazaar_ecommerce.Enum.ProductCategory;
+import com.example.namma_bazaar_ecommerce.Enum.ProductStatus;
 import com.example.namma_bazaar_ecommerce.dto.requestDto.ProductRequestDto;
 import com.example.namma_bazaar_ecommerce.dto.responseDto.ProductResponseDto;
 import com.example.namma_bazaar_ecommerce.exception.InvalidSellerException;
+import com.example.namma_bazaar_ecommerce.model.Item;
 import com.example.namma_bazaar_ecommerce.model.Product;
 import com.example.namma_bazaar_ecommerce.model.Seller;
 import com.example.namma_bazaar_ecommerce.repository.ProductRepository;
@@ -60,6 +62,20 @@ public class ProductServiceImpl implements ProductService {
             productResponseDtos.add(ProductTransformer.productToProductResponseDto(p));
         }
         return productResponseDtos;
+    }
+
+    public void decreaseProductQuantity(Item item) throws Exception {
+
+        Product product = item.getProduct();
+        int quantity = item.getRequiredQuantity();
+        int currentQuantity = product.getQuantity();
+        if(quantity>currentQuantity){
+            throw new Exception("Out of stock");
+        }
+        product.setQuantity(currentQuantity-quantity);
+        if(product.getQuantity()==0){
+            product.setProductStatus(ProductStatus.OUT_OF_STOCK);
+        }
     }
 
 }
